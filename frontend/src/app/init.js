@@ -2,8 +2,8 @@
 
 import i18next from 'i18next';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
-import App from './components/app.js';
-import resources from './locales/index.js';
+import App from './app.js';
+import resources from '../shared/i18n';
 
 const init = async () => {
   const i18n = i18next.createInstance();
