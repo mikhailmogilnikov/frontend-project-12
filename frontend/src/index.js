@@ -1,8 +1,8 @@
 /* eslint-disable functional/no-expression-statement */
 
 import ReactDOM from 'react-dom/client';
-import init from './app/init.js';
-import './app/index.scss';
+import { initApp } from './app';
+import './app/globals.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(await init());
+root.render(await initApp());

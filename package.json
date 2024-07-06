@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/mikhailmogilnikov/frontend-project-12#readme",
   "dependencies": {
-    "@hexlet/chat-server": "^2.0.3",
-    "sass": "^1.77.6"
+    "@hexlet/chat-server": "^2.0.3"
   }
 }

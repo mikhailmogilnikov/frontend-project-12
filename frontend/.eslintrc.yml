@@ -19,6 +19,11 @@ plugins:
   - functional
 
 rules:
+  functional/no-expression-statement: 0
+  import/no-extraneous-dependencies: 0
+  jsx-quotes: 0
+  arrow-body-style: 0
+  import/prefer-default-export: 0
   import/extensions: 0
   import/no-unresolved: 0
   react/prop-types: 0
