@@ -9,7 +9,14 @@ export const messagesApi = createApi({
     getMessages: build.query({
       query: () => 'messages',
     }),
+    addMessage: build.mutation({
+      query: (body) => ({
+        url: 'messages',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetMessagesQuery } = messagesApi;
+export const { useGetMessagesQuery, useAddMessageMutation } = messagesApi;

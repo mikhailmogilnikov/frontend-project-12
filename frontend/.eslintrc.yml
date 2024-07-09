@@ -19,6 +19,7 @@ plugins:
   - functional
 
 rules:
+  react-hooks/exhaustive-deps: 0
   functional/no-conditional-statement: 0
   react/jsx-props-no-spreading: 0
   functional/no-expression-statement: 0

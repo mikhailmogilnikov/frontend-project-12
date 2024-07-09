@@ -1,36 +1,46 @@
-import { Input, ScrollShadow, Spinner } from '@nextui-org/react';
-import { SendMessage } from 'features/send-message';
+import { ScrollShadow, Spinner } from '@nextui-org/react';
 import { Flex } from 'shared/ui/primitives/flex';
+import { AddMessageInput } from 'features/add-message';
+import { io } from 'socket.io-client';
+import { useEffect, useState } from 'react';
 import { useGetMessagesQuery } from '../model/messages-store';
+import { MessagesList } from './messages-list';
 
-export const MessagesList = () => {
+export const MessagesBar = () => {
   const { data, isLoading } = useGetMessagesQuery();
+  const [messages, setMessages] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(data);
-  };
+  useEffect(() => {
+    const socket = io('ws://localhost:3000');
+
+    const handleMessage = (payload) => {
+      setMessages((prevMessages) => [...prevMessages, payload]);
+    };
+
+    socket.on('newMessage', handleMessage);
+
+    return () => {
+      socket.off('newMessage', handleMessage);
+      socket.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      setMessages(data);
+    }
+  }, [data]);
 
   return (
     <Flex center col tag='section' className='px-4'>
-      <Flex col className='w-full max-w-[800px] h-full'>
+      <Flex col className='w-full max-w-[800px] h-full' gap={0}>
         <ScrollShadow
           orientation='vertical'
-          className='flex flex-col-reverse h-full'
+          className='flex flex-col-reverse h-full gap-2 px-4 py-6'
         >
-          {isLoading ? <Spinner /> : 'message'}
+          {isLoading ? <Spinner /> : <MessagesList messages={messages} />}
         </ScrollShadow>
-        <form onSubmit={handleSubmit} action='submit'>
-          <Input
-            isDisabled={isLoading}
-            className='flex-shrink-0 mb-6'
-            classNames={{ inputWrapper: '!bg-default shadow-base' }}
-            size='lg'
-            radius='full'
-            placeholder='Введите сообщение...'
-            endContent={<SendMessage />}
-          />
-        </form>
+        <AddMessageInput isLoading={isLoading} />
       </Flex>
     </Flex>
   );

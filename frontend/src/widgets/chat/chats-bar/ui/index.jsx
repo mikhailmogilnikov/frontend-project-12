@@ -3,6 +3,7 @@ import { Divider, Spinner } from '@nextui-org/react';
 import { AddChatButton } from 'features/add-chat';
 import { Flex } from 'shared/ui/primitives/flex';
 import { useGetChatsQuery } from '../model/chats-store';
+import { ChatsList } from './chats-list';
 
 export const ChatsBar = () => {
   const { data, isLoading } = useGetChatsQuery();
@@ -19,8 +20,6 @@ export const ChatsBar = () => {
     );
   }
 
-  console.log(data);
-
   return (
     <Flex
       col
@@ -28,7 +27,10 @@ export const ChatsBar = () => {
       tag='aside'
     >
       <AddChatButton />
+
       <Divider className='-mx-4 w-[calc(100%+32px)]' />
+
+      <ChatsList chats={data} />
     </Flex>
   );
 };
