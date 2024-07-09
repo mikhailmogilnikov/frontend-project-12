@@ -5,6 +5,7 @@ import { initReactI18next } from 'react-i18next';
 import resources from 'shared/i18n/index.js';
 import { router } from './routes.jsx';
 import { Providers } from './providers.jsx';
+import { store } from './store';
 
 export const initApp = async () => {
   const i18n = i18next.createInstance();
@@ -14,5 +15,5 @@ export const initApp = async () => {
     fallbackLng: 'ru',
   });
 
-  return <Providers router={router} i18n={i18n} />;
+  return <Providers router={router} i18n={i18n} store={store} />;
 };

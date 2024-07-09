@@ -9,11 +9,7 @@ export const MainLayout = () => {
   return (
     <>
       <Header />
-      <Flex
-        tag='main'
-        col
-        className='container mx-auto my-4 px-4 min-h-[calc(100dvh-64px-80px-16px)]'
-      >
+      <Flex tag='main' col className='mx-auto min-h-[calc(100dvh-64px-80px)]'>
         <Outlet />
       </Flex>
     </>

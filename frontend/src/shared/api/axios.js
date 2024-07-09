@@ -1,5 +1,6 @@
 import axios from 'axios';
+import { BASE_URL } from 'shared/config/urls';
 
 export default axios.create({
-  baseURL: '/api/v1',
+  baseURL: BASE_URL,
 });

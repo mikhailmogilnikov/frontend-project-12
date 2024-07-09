@@ -9,10 +9,12 @@ import { Typo } from 'shared/ui/primitives/typography';
 import { AnimatePresence, LayoutGroup } from 'framer-motion';
 import { MotionLayout } from 'shared/ui/motion-layout';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { loginApi } from '../api/login';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <Flex className='m-auto max-w-96'>
@@ -41,7 +43,7 @@ export const LoginForm = () => {
             <LayoutGroup>
               <MotionLayout>
                 <Typo tag='h2' weight={600} size={24} className='mb-2'>
-                  Войти
+                  {t('enter')}
                 </Typo>
               </MotionLayout>
 
@@ -52,7 +54,7 @@ export const LoginForm = () => {
                   isInvalid={errors.username}
                   size='lg'
                   classNames={{ inputWrapper: '!bg-default' }}
-                  placeholder='Ваш ник'
+                  placeholder={t('nickname')}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
@@ -67,7 +69,7 @@ export const LoginForm = () => {
                   isInvalid={errors.username}
                   size='lg'
                   classNames={{ inputWrapper: '!bg-default' }}
-                  placeholder='Пароль'
+                  placeholder={t('password')}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
@@ -83,9 +85,7 @@ export const LoginForm = () => {
                     exit={{ opacity: 0, filter: 'blur(24px)' }}
                     className='px-4 py-3 bg-danger/20 rounded-2xl'
                   >
-                    <Typo className='text-danger'>
-                      Неверные имя пользователя или пароль
-                    </Typo>
+                    <Typo className='text-danger'>{t('error')}</Typo>
                   </MotionLayout>
                 )}
               </AnimatePresence>
@@ -100,15 +100,22 @@ export const LoginForm = () => {
                   className='mt-3 font-medium'
                   isSubmitting={isSubmitting}
                 >
-                  Войти
+                  {t('enter')}
                 </Button>
+
                 <Typo tag='h3' weight={600} size={16} className='mt-6'>
-                  <span className='opacity-50'>Нет аккаунта? </span>
-                  <button type='button'>Зарегистрироваться.</button>
+                  <span className='opacity-50'>
+                    {t('noAccount')}
+                    {' '}
+                  </span>
+                  <button type='button'>{t('register')}</button>
                   <br />
                 </Typo>
+
                 <Typo weight={600} size={16} opacity={0.5}>
-                  Тестовые данные: admin admin.
+                  {t('testData')}
+                  {' '}
+                  admin admin.
                 </Typo>
               </MotionLayout>
             </LayoutGroup>
