@@ -19,6 +19,7 @@ plugins:
   - functional
 
 rules:
+  react/jsx-props-no-spreading: 0
   functional/no-expression-statement: 0
   import/no-extraneous-dependencies: 0
   jsx-quotes: 0

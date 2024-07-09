@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { Flex } from 'shared/ui/flex';
-import { Typo } from 'shared/ui/typography';
+import { Flex } from 'shared/ui/primitives/flex';
+import { Typo } from 'shared/ui/primitives/typography';
 
 export const ErrorPage = () => {
   const navigate = useNavigate();

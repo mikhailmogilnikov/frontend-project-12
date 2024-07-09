@@ -1,8 +1,11 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/mikhailmogilnikov/frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/mikhailmogilnikov/frontend-project-12/actions)",
-  "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
+  "description": "Chat (slack)",
+  "main": "frontend/src/index.js",
   "scripts": {
     "build": "npm run build --prefix frontend",
     "start": "start-server -s ./frontend/build",

@@ -7,8 +7,6 @@ import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
 export const PasswordInput = ({ ...rest }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  console.log(isVisible);
-
   const ShowPasswordButton = isVisible ? (
     <button
       type='button'

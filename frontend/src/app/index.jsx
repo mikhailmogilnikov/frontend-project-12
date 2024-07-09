@@ -6,6 +6,8 @@ import { RouterProvider } from 'react-router-dom';
 import resources from 'shared/i18n/index.js';
 import { NextUIProvider } from '@nextui-org/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import { LazyMotion } from 'framer-motion';
+
 import { router } from './routes.jsx';
 
 export const initApp = async () => {
@@ -16,13 +18,17 @@ export const initApp = async () => {
     fallbackLng: 'ru',
   });
 
+  const loadFeatures = () => import('shared/config/dom-max.js').then((res) => res.domMax);
+
   return (
-    <NextThemesProvider attribute='class' defaultTheme='light'>
-      <NextUIProvider>
-        <I18nextProvider i18n={i18n}>
-          <RouterProvider router={router} />
-        </I18nextProvider>
-      </NextUIProvider>
-    </NextThemesProvider>
+    <LazyMotion features={loadFeatures}>
+      <NextThemesProvider attribute='class' defaultTheme='light'>
+        <NextUIProvider>
+          <I18nextProvider i18n={i18n}>
+            <RouterProvider router={router} />
+          </I18nextProvider>
+        </NextUIProvider>
+      </NextThemesProvider>
+    </LazyMotion>
   );
 };
