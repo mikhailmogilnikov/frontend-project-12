@@ -40,21 +40,34 @@ export const ChatCard = ({ chat, onPress }) => {
             </Typo>
           </Flex>
 
-          <Typo
-            size={13}
-            weight={500}
-            opacity={0.5}
-            className={`leading-4 line-clamp-2 text-wrap ${
-              isChatActive && 'text-secondary-foreground'
-            }`}
-          >
-            <span>
-              {chatMessages.at(-1).username}
-              :
-              {' '}
-            </span>
-            <span>{chatMessages.at(-1).body}</span>
-          </Typo>
+          {chatMessages.length > 0 ? (
+            <Typo
+              size={14}
+              weight={500}
+              opacity={0.5}
+              className={`leading-4 line-clamp-2 text-wrap ${
+                isChatActive && 'text-secondary-foreground'
+              }`}
+            >
+              <span>
+                {chatMessages.at(-1).username}
+                :
+                {' '}
+              </span>
+              <span>{chatMessages.at(-1).body}</span>
+            </Typo>
+          ) : (
+            <Typo
+              size={14}
+              weight={500}
+              opacity={0.5}
+              className={`leading-4 line-clamp-2 text-wrap italic ${
+                isChatActive && 'text-secondary-foreground'
+              }`}
+            >
+              Нет сообщений
+            </Typo>
+          )}
         </Flex>
       </Flex>
     </Button>

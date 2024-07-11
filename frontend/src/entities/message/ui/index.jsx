@@ -16,7 +16,7 @@ export const MessageBubble = ({ message }) => {
         className='w-fit max-w-[90%] h-min bg-primary px-3 py-1 rounded-2xl overflow-hidden'
         editable
       >
-        <Typo className='text-wrap break-all text-primary-foreground'>
+        <Typo className='text-wrap break-words text-primary-foreground'>
           {message.body}
         </Typo>
       </Flex>
