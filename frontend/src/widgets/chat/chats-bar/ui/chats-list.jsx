@@ -1,8 +1,8 @@
 import { Spinner } from '@nextui-org/react';
 import { ChatCard } from 'entities/chat';
+import { useGetMessagesQuery } from 'entities/message';
+import { useMessengerStore } from 'entities/messenger';
 import { useLayoutEffect } from 'react';
-import { useMessengerStore } from 'shared/lib/hooks/use-messenger-store';
-import { useGetMessagesQuery } from 'widgets/chat/messages-list';
 
 export const ChatsList = ({ chats }) => {
   const { activeChat, setActiveChat } = useMessengerStore();

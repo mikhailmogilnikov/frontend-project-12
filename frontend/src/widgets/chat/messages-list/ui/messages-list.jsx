@@ -1,12 +1,14 @@
 import { MessageBubble } from 'entities/message';
+import { useMessengerStore } from 'entities/messenger';
 import { LayoutGroup } from 'framer-motion';
-import { useMessengerStore } from 'shared/lib/hooks/use-messenger-store';
 import { MotionLayout } from 'shared/ui/motion-layout';
+import { Flex } from 'shared/ui/primitives/flex';
+import { Typo } from 'shared/ui/primitives/typography';
 
-export const MessagesList = ({ messages }) => {
-  const { activeChat } = useMessengerStore();
+export const MessagesList = () => {
+  const { messages, activeChat } = useMessengerStore();
 
-  if (!messages.length) {
+  if (!messages) {
     return <>f</>;
   }
 
@@ -14,13 +16,25 @@ export const MessagesList = ({ messages }) => {
     (message) => message.channelId === activeChat.id,
   );
 
+  if (chatMessages.length === 0) {
+    return (
+      <Flex col center className='w-full h-full justify-center' gap={0}>
+        <Typo weight={600}>Сообщений нет</Typo>
+        <Typo size={15} opacity={0.5} weight={600}>
+          Начните диалог первым!
+        </Typo>
+      </Flex>
+    );
+  }
+
   return (
     <LayoutGroup>
-      {chatMessages.reverse().map((message) => (
+      {chatMessages.reverse().map((message, index) => (
         <MotionLayout
           key={message.id}
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: index * 0.01 }}
         >
           <MessageBubble message={message} />
         </MotionLayout>

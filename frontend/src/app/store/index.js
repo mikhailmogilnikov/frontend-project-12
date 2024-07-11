@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { chatsApi } from 'widgets/chat/chats-bar';
-import { messagesApi } from 'widgets/chat/messages-list';
-import { messengerReducer } from 'pages/home';
+import { messagesApi } from 'entities/message';
+import { messengerReducer } from 'entities/messenger';
 
 export const store = configureStore({
   reducer: {

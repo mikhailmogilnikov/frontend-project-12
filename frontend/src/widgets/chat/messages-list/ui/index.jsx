@@ -2,19 +2,20 @@ import { ScrollShadow, Spinner } from '@nextui-org/react';
 import { Flex } from 'shared/ui/primitives/flex';
 import { AddMessageInput } from 'features/add-message';
 import { io } from 'socket.io-client';
-import { useEffect, useState } from 'react';
-import { useGetMessagesQuery } from '../model/messages-store';
+import { useEffect } from 'react';
+import { useMessengerStore } from 'entities/messenger';
+import { useGetMessagesQuery } from '../../../../entities/message/model/messages-store';
 import { MessagesList } from './messages-list';
 
 export const MessagesBar = () => {
-  const { data, isLoading } = useGetMessagesQuery();
-  const [messages, setMessages] = useState([]);
+  const { isLoading } = useGetMessagesQuery();
+  const { addNewMessage } = useMessengerStore();
 
   useEffect(() => {
-    const socket = io('ws://localhost:3000');
+    const socket = io('');
 
     const handleMessage = (payload) => {
-      setMessages((prevMessages) => [...prevMessages, payload]);
+      addNewMessage(payload);
     };
 
     socket.on('newMessage', handleMessage);
@@ -25,20 +26,14 @@ export const MessagesBar = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      setMessages(data);
-    }
-  }, [data]);
-
   return (
     <Flex center col tag='section' className='px-4'>
       <Flex col className='w-full max-w-[800px] h-full' gap={0}>
         <ScrollShadow
           orientation='vertical'
-          className='flex flex-col-reverse h-full gap-2 px-4 py-6'
+          className='flex flex-col-reverse h-full gap-1 px-4 py-8'
         >
-          {isLoading ? <Spinner /> : <MessagesList messages={messages} />}
+          {isLoading ? <Spinner /> : <MessagesList />}
         </ScrollShadow>
         <AddMessageInput isLoading={isLoading} />
       </Flex>

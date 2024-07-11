@@ -1,8 +1,9 @@
 import { Input } from '@nextui-org/react';
+import { useAddMessageMutation } from 'entities/message/model/messages-store';
+import { useMessengerStore } from 'entities/messenger';
 import { SendMessage } from 'features/send-message';
 import { useRef, useState } from 'react';
-import { useMessengerStore } from 'shared/lib/hooks/use-messenger-store';
-import { useAddMessageMutation } from 'widgets/chat/messages-list/model/messages-store';
+import { MotionLayout } from 'shared/ui/motion-layout';
 
 export const AddMessageInput = ({ isLoading }) => {
   const { activeChat } = useMessengerStore();
@@ -14,7 +15,7 @@ export const AddMessageInput = ({ isLoading }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (newMessage.length > 50) {
+    if (newMessage.length > 1024) {
       return;
     }
 
@@ -28,22 +29,27 @@ export const AddMessageInput = ({ isLoading }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} action='submit'>
-      <Input
-        ref={inputRef}
-        value={newMessage}
-        onChange={(e) => setNewMessage(e.target.value)}
-        isDisabled={isLoading}
-        className='flex-shrink-0 mb-6'
-        classNames={{ inputWrapper: '!bg-default shadow-base' }}
-        size='lg'
-        autoFocus
-        radius='full'
-        placeholder='Введите сообщение...'
-        endContent={
-          <SendMessage message={newMessage} isLoading={isLoadingMessage} />
-        }
-      />
-    </form>
+    <MotionLayout
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+    >
+      <form onSubmit={handleSubmit} action='submit'>
+        <Input
+          ref={inputRef}
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+          isDisabled={isLoading}
+          className='flex-shrink-0 mb-6'
+          classNames={{ inputWrapper: '!bg-default shadow-base' }}
+          size='lg'
+          autoFocus
+          radius='full'
+          placeholder='Введите сообщение...'
+          endContent={
+            <SendMessage message={newMessage} isLoading={isLoadingMessage} />
+          }
+        />
+      </form>
+    </MotionLayout>
   );
 };
