@@ -23,7 +23,7 @@ export const ChatsBar = () => {
   return (
     <Flex
       col
-      className='w-full max-w-80 h-full border-r-1 border-divider p-4'
+      className='w-full max-w-80 h-full border-r-1 border-divider p-4 flex-shrink-0'
       tag='aside'
     >
       <AddChatButton />

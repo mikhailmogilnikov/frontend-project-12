@@ -1,5 +1,6 @@
 import { Button } from '@nextui-org/react';
 import { useMessengerStore } from 'entities/messenger';
+import { FaLock } from 'react-icons/fa';
 import { PiMegaphoneSimpleBold } from 'react-icons/pi';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
@@ -23,10 +24,7 @@ export const ChatCard = ({ chat, onPress }) => {
     >
       <Flex>
         <Flex col gap={2}>
-          <Flex gap={1}>
-            <PiMegaphoneSimpleBold
-              className={`${isChatActive && 'text-secondary-foreground'}`}
-            />
+          <Flex gap={2}>
             <Typo
               size={16}
               weight={600}
@@ -34,8 +32,24 @@ export const ChatCard = ({ chat, onPress }) => {
                 isChatActive && 'text-secondary-foreground'
               }`}
             >
-              {chat.name}
+              {`# ${chat.name}`}
             </Typo>
+            <PiMegaphoneSimpleBold
+              size={14}
+              opacity={0.5}
+              className={`mt-[1px] ${
+                isChatActive && 'text-secondary-foreground'
+              }`}
+            />
+            {!chat.removable && (
+              <FaLock
+                size={12}
+                opacity={0.5}
+                className={`mt-[2px] ${
+                  isChatActive && 'text-secondary-foreground'
+                }`}
+              />
+            )}
           </Flex>
 
           {chatMessages.length > 0 ? (
@@ -43,7 +57,7 @@ export const ChatCard = ({ chat, onPress }) => {
               size={14}
               weight={500}
               opacity={0.5}
-              className={`leading-4 line-clamp-2 text-wrap ${
+              className={`leading-4 line-clamp-2 text-wrap break-all ${
                 isChatActive && 'text-secondary-foreground'
               }`}
             >

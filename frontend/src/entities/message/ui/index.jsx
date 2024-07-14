@@ -13,10 +13,10 @@ export const MessageBubble = ({ message }) => {
       </Typo>
       <Flex
         wrap
-        className='w-fit max-w-[90%] h-min bg-primary px-3 py-1 rounded-2xl overflow-hidden'
+        className='w-fit max-w-[90%] h-min bg-primary px-3 py-1 rounded-2xl overflow-hidden break-words'
         editable
       >
-        <Typo className='text-wrap break-words text-primary-foreground'>
+        <Typo className='text-wrap !break-all text-primary-foreground select-text'>
           {message.body}
         </Typo>
       </Flex>

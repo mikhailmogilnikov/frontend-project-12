@@ -8,8 +8,17 @@ const login = {
   password: 'Пароль',
 };
 
+const chat = {
+  messages: {
+    t_one: '{{count}} сообщение',
+    t_few: '{{count}} сообщения',
+    t_many: '{{count}} сообщений',
+  },
+};
+
 export default {
   translation: {
     ...login,
+    chat,
   },
 };

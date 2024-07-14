@@ -2,7 +2,7 @@ import { Input } from '@nextui-org/react';
 import { useAddMessageMutation } from 'entities/message/model/messages-store';
 import { useMessengerStore } from 'entities/messenger';
 import { SendMessage } from 'features/send-message';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MotionLayout } from 'shared/ui/motion-layout';
 
 export const AddMessageInput = ({ isLoading }) => {
@@ -28,6 +28,12 @@ export const AddMessageInput = ({ isLoading }) => {
     }
   };
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [activeChat]);
+
   return (
     <MotionLayout
       initial={{ opacity: 0, y: 100 }}
@@ -42,8 +48,9 @@ export const AddMessageInput = ({ isLoading }) => {
           className='flex-shrink-0 mb-6'
           classNames={{ inputWrapper: '!bg-default shadow-base' }}
           size='lg'
-          autoFocus
+          name='message'
           radius='full'
+          autoComplete='new-password'
           placeholder='Введите сообщение...'
           endContent={
             <SendMessage message={newMessage} isLoading={isLoadingMessage} />
