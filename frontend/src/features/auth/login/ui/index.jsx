@@ -16,20 +16,25 @@ export const LoginForm = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  const handleLogin = async (values, { setErrors }) => {
+    try {
+      const response = await loginApi(values);
+      const { token, username } = response.data;
+
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+
+      navigate(0);
+    } catch (e) {
+      setErrors(e);
+    }
+  };
+
   return (
     <Flex className='m-auto max-w-96'>
       <Formik
         initialValues={{ username: '', password: '' }}
-        onSubmit={async (values, { setErrors }) => {
-          try {
-            const response = await loginApi(values);
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('username', response.data.username);
-            navigate('/');
-          } catch (e) {
-            setErrors(e);
-          }
-        }}
+        onSubmit={handleLogin}
       >
         {({
           values,

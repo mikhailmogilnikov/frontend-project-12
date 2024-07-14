@@ -13,7 +13,6 @@ export const useValidateToken = () => {
     const token = localStorage.getItem('token');
 
     if (location.pathname === '/login' && token) {
-      console.log('login');
       navigate('/');
     } else if (location.pathname !== '/login' && !token) {
       navigate('/login');

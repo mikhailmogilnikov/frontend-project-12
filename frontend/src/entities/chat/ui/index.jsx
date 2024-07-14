@@ -13,8 +13,6 @@ export const ChatCard = ({ chat, onPress }) => {
     ({ channelId }) => channelId === chat.id,
   );
 
-  console.log(chatMessages);
-
   return (
     <Button
       key={chat.id}
