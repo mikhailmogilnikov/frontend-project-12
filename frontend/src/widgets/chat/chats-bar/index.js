@@ -1,2 +1,2 @@
 export { ChatsBar } from './ui';
-export { chatsApi, useGetChatsQuery } from './model/chats-store';
+export { chatsApi, useGetChatsQuery } from '../../../entities/chat/model/chats-store';

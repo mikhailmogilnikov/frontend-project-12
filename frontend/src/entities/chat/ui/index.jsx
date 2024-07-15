@@ -20,7 +20,7 @@ export const ChatCard = ({ chat, onPress }) => {
       size='lg'
       onPress={onPress}
       color={isChatActive ? 'secondary' : 'default'}
-      className='h-[78px] shadow-medium p-3 text-start rounded-2xl items-start justify-start'
+      className='h-[78px] shadow-medium p-3 text-start rounded-2xl items-start justify-start flex-shrink-0'
     >
       <Flex>
         <Flex col gap={2}>

@@ -8,7 +8,14 @@ export const chatsApi = createApi({
     getChats: build.query({
       query: () => 'channels',
     }),
+    addChat: build.mutation({
+      query: (body) => ({
+        url: 'channels',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetChatsQuery } = chatsApi;
+export const { useGetChatsQuery, useAddChatMutation } = chatsApi;

@@ -7,7 +7,7 @@ export const MessageBubble = ({ message }) => {
   const isOwnMessage = message.username === myUsername;
 
   return (
-    <Flex col className={`${isOwnMessage && 'items-end'}`} gap={0}>
+    <Flex col className={`max-w-[800px] mx-auto ${isOwnMessage && 'items-end'}`} gap={0}>
       <Typo weight={600} size={14} opacity={0.5}>
         {message.username}
       </Typo>

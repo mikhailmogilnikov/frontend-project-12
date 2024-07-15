@@ -9,7 +9,7 @@ export const MessagesList = () => {
   const { messages, activeChat } = useMessengerStore();
 
   if (!messages) {
-    return <>f</>;
+    return null;
   }
 
   const chatMessages = messages.filter(

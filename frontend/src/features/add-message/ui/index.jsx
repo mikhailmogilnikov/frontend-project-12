@@ -38,6 +38,7 @@ export const AddMessageInput = ({ isLoading }) => {
     <MotionLayout
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
+      className='w-full max-w-[800px] mx-auto'
     >
       <form onSubmit={handleSubmit} action='submit'>
         <Input

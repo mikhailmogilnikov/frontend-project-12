@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { chatsApi } from 'widgets/chat/chats-bar';
+import { chatsApi } from 'entities/chat';
 import { messagesApi } from 'entities/message';
 import { messengerReducer } from 'entities/messenger';
 
