@@ -33,8 +33,8 @@ export const Header = () => {
           </Flex>
 
           {activeChat && msg && (
-            <Flex col gap={0} className='pl-4 leading-4'>
-              <Typo tag='h4' size={18} weight={600}>
+            <Flex col gap={2} className='pl-4'>
+              <Typo tag='h4' size={18} weight={600} className='leading-4'>
                 {`# ${activeChat.name}`}
               </Typo>
               <Typo

@@ -4,6 +4,7 @@ import { FaLock } from 'react-icons/fa';
 import { PiMegaphoneSimpleBold } from 'react-icons/pi';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
+import { ChatSettings } from './settings';
 
 export const ChatCard = ({ chat, onPress }) => {
   const { messages, activeChat } = useMessengerStore();
@@ -24,32 +25,35 @@ export const ChatCard = ({ chat, onPress }) => {
     >
       <Flex>
         <Flex col gap={2}>
-          <Flex gap={2}>
-            <Typo
-              size={16}
-              weight={600}
-              className={`leading-3 mt-[1px] ${
-                isChatActive && 'text-secondary-foreground'
-              }`}
-            >
-              {`# ${chat.name}`}
-            </Typo>
-            <PiMegaphoneSimpleBold
-              size={14}
-              opacity={0.5}
-              className={`mt-[1px] ${
-                isChatActive && 'text-secondary-foreground'
-              }`}
-            />
-            {!chat.removable && (
-              <FaLock
-                size={12}
+          <Flex className='justify-between' gap={1}>
+            <Flex gap={2}>
+              <Typo
+                size={16}
+                weight={600}
+                className={`leading-3 mt-[1px] ${
+                  isChatActive && 'text-secondary-foreground'
+                }`}
+              >
+                {`# ${chat.name}`}
+              </Typo>
+              <PiMegaphoneSimpleBold
+                size={14}
                 opacity={0.5}
-                className={`mt-[2px] ${
+                className={`mt-[1px] ${
                   isChatActive && 'text-secondary-foreground'
                 }`}
               />
-            )}
+              {!chat.removable && (
+                <FaLock
+                  size={12}
+                  opacity={0.5}
+                  className={`mt-[2px] ${
+                    isChatActive && 'text-secondary-foreground'
+                  }`}
+                />
+              )}
+            </Flex>
+            {chat.removable && <ChatSettings isChatActive={isChatActive} />}
           </Flex>
 
           {chatMessages.length > 0 ? (

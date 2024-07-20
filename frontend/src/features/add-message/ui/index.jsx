@@ -51,7 +51,7 @@ export const AddMessageInput = ({ isLoading }) => {
           size='lg'
           name='message'
           radius='full'
-          autoComplete='new-password'
+          autoComplete='off'
           placeholder='Введите сообщение...'
           endContent={
             <SendMessage message={newMessage} isLoading={isLoadingMessage} />
