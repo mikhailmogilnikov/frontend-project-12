@@ -5,8 +5,7 @@ import { useEffect } from 'react';
 export const DeleteChatModalContent = ({ onClose, chat }) => {
   const [deleteChat, { isLoading }] = useRemoveChatMutation();
 
-  const handleDeleteChannel = async (e) => {
-    e.preventDefault();
+  const handleDeleteChannel = async () => {
     await deleteChat(chat.id);
     onClose();
   };
