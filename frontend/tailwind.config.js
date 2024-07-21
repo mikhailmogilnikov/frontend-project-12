@@ -20,6 +20,7 @@ module.exports = {
       boxShadow: {
         base: '2px 4px 12px #00000014',
         hover: '2px 4px 16px #00000029',
+        neo: '12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px -10px white',
       },
       animation: {
         preloaderPulse: 'preloadPulse 2s linear infinite',

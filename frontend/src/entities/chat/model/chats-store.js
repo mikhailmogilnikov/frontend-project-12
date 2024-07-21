@@ -15,7 +15,25 @@ export const chatsApi = createApi({
         body,
       }),
     }),
+    editChat: build.mutation({
+      query: ({ id, body }) => ({
+        url: `channels/${id}`,
+        method: 'PATCH',
+        body,
+      }),
+    }),
+    removeChat: build.mutation({
+      query: (id) => ({
+        url: `channels/${id}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 
-export const { useGetChatsQuery, useAddChatMutation } = chatsApi;
+export const {
+  useGetChatsQuery,
+  useAddChatMutation,
+  useEditChatMutation,
+  useRemoveChatMutation,
+} = chatsApi;

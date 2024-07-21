@@ -10,7 +10,11 @@ export const AddChatButton = () => {
 
   return (
     <>
-      <Button fullWidth className='font-medium shadow-base flex-shrink-0' onPress={onOpen}>
+      <Button
+        fullWidth
+        className='font-medium shadow-base flex-shrink-0'
+        onPress={onOpen}
+      >
         <PiPlusCircleBold size={18} />
         Добавить чат
       </Button>

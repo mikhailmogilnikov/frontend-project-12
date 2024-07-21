@@ -21,6 +21,20 @@ export const useMessengerStore = () => {
     });
   };
 
+  const editChat = (editedChat) => {
+    dispatch({
+      type: 'messenger/editChat',
+      payload: editedChat,
+    });
+  };
+
+  const removeChat = (removedChatId) => {
+    dispatch({
+      type: 'messenger/removeChat',
+      payload: removedChatId,
+    });
+  };
+
   const setActiveChat = (newActiveChat) => {
     dispatch({
       type: 'messenger/setActiveChat',
@@ -35,5 +49,7 @@ export const useMessengerStore = () => {
     setActiveChat,
     addNewMessage,
     addNewChat,
+    editChat,
+    removeChat,
   };
 };

@@ -2,6 +2,7 @@ import { Spinner } from '@nextui-org/react';
 import { ChatCard } from 'entities/chat';
 import { useGetMessagesQuery } from 'entities/message';
 import { useMessengerStore } from 'entities/messenger';
+import { ChatSettingsDropdown } from 'features/configure-chat';
 
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
@@ -25,6 +26,11 @@ export const ChatsList = () => {
   }
 
   return chats.map((chat) => (
-    <ChatCard key={chat.id} chat={chat} onPress={handlePress(chat)} />
+    <ChatCard
+      key={chat.id}
+      chat={chat}
+      onPress={handlePress(chat)}
+      settings={<ChatSettingsDropdown chat={chat} />}
+    />
   ));
 };

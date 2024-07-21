@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const AddChatValidationSchema = (uniqueValidation) => yup.object().shape({
+export const ChatValidationSchema = (uniqueValidation) => yup.object().shape({
   channel: yup
     .string()
     .min(3, 'Название канала должно содержать не менее 3 символов')

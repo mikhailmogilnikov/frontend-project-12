@@ -1,21 +1,20 @@
 import {
   Button, Input, ModalBody, ModalHeader,
 } from '@nextui-org/react';
-import { ChatValidationSchema, useAddChatMutation } from 'entities/chat';
+import { ChatValidationSchema, useEditChatMutation } from 'entities/chat';
 import { useMessengerStore } from 'entities/messenger';
 import { Formik } from 'formik';
+import { uniqueNameValidation } from 'shared/lib/utils/unique-value-validation';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
-import { uniqueNameValidation } from 'shared/lib/utils/unique-value-validation';
 
-export const AddChatModalContent = ({ onClose }) => {
-  const { chats, setActiveChat } = useMessengerStore();
-  const [addChat] = useAddChatMutation();
+export const EditChatModalContent = ({ onClose, chat }) => {
+  const { chats } = useMessengerStore();
+  const [editChat] = useEditChatMutation();
 
-  const handleCreateChannel = async ({ channel }, { setSubmitting }) => {
+  const handleEditChannel = async ({ channel }, { setSubmitting }) => {
     const newChat = { name: channel };
-    const newChatResponse = await addChat(newChat);
-    setActiveChat(newChatResponse.data);
+    await editChat({ id: chat.id, body: newChat });
     setSubmitting(false);
     onClose();
   };
@@ -23,11 +22,11 @@ export const AddChatModalContent = ({ onClose }) => {
   return (
     <>
       <ModalHeader className='flex flex-col gap-1'>
-        <h2 className='text-xl p-2 pb-0 pt-3'>Создать новый канал</h2>
+        <h2 className='text-xl p-2 pb-0 pt-3'>Переименовать канал</h2>
       </ModalHeader>
       <Formik
-        initialValues={{ channel: '' }}
-        onSubmit={handleCreateChannel}
+        initialValues={{ channel: chat.name }}
+        onSubmit={handleEditChannel}
         validationSchema={ChatValidationSchema(uniqueNameValidation(chats))}
       >
         {({
@@ -63,7 +62,7 @@ export const AddChatModalContent = ({ onClose }) => {
               )}
 
               <p className='opacity-50 font-medium px-2 py-1'>
-                Канал создается публично и доступен всем пользователям чата.
+                Изменения увидят все пользователи чата.
               </p>
             </ModalBody>
             <div className='w-full flex gap-4 px-6 pb-6 pt-4'>
@@ -84,7 +83,7 @@ export const AddChatModalContent = ({ onClose }) => {
                 size='lg'
                 variant='shadow'
               >
-                Cоздать
+                Отправить
               </Button>
             </div>
           </form>

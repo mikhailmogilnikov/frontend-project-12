@@ -20,6 +20,16 @@ const messengerSlice = createSlice({
     addChat: (state, action) => {
       state.chats.push(action.payload);
     },
+    editChat: (state, { payload }) => {
+      const editChatIndex = state.chats.findIndex(
+        ({ id }) => payload.id === id,
+      );
+      state.chats[editChatIndex].name = payload.name;
+    },
+    removeChat: (state, { payload }) => {
+      const newChatsList = state.chats.filter(({ id }) => id !== payload.id);
+      state.chats = newChatsList;
+    },
     setActiveChat: (state, { payload }) => {
       state.activeChat = payload;
     },

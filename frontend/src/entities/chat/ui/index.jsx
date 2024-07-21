@@ -4,9 +4,8 @@ import { FaLock } from 'react-icons/fa';
 import { PiMegaphoneSimpleBold } from 'react-icons/pi';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
-import { ChatSettings } from './settings';
 
-export const ChatCard = ({ chat, onPress }) => {
+export const ChatCard = ({ chat, onPress, settings }) => {
   const { messages, activeChat } = useMessengerStore();
 
   const isChatActive = chat.id === activeChat.id;
@@ -53,7 +52,7 @@ export const ChatCard = ({ chat, onPress }) => {
                 />
               )}
             </Flex>
-            {chat.removable && <ChatSettings isChatActive={isChatActive} />}
+            {chat.removable && settings}
           </Flex>
 
           {chatMessages.length > 0 ? (
