@@ -1,9 +1,9 @@
 import { Input } from '@nextui-org/react';
 import { useAddMessageMutation } from 'entities/message/model/messages-store';
 import { useMessengerStore } from 'entities/messenger';
-import { SendMessage } from 'features/send-message';
 import { useEffect, useRef, useState } from 'react';
 import { MotionLayout } from 'shared/ui/motion-layout';
+import { SendMessage } from './button';
 
 export const AddMessageInput = ({ isLoading }) => {
   const { activeChat } = useMessengerStore();
