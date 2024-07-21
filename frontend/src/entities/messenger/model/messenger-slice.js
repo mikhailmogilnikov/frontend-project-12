@@ -28,8 +28,13 @@ const messengerSlice = createSlice({
     },
     removeChat: (state, { payload }) => {
       const newChatsList = state.chats.filter(({ id }) => id !== payload.id);
+      const newMessagesList = state.messages.filter(
+        ({ channelId }) => payload.id !== channelId,
+      );
+
       state.activeChat = state.chats[0];
       state.chats = newChatsList;
+      state.messages = newMessagesList;
     },
     setActiveChat: (state, { payload }) => {
       state.activeChat = payload;

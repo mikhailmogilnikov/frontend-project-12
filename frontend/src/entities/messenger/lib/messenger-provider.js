@@ -4,10 +4,8 @@ import { useMessengerStore } from './use-messenger-store';
 
 export const MessengerProvider = ({ children }) => {
   const {
-    addNewMessage, addNewChat, editChat, removeChat, messages,
+    addNewMessage, addNewChat, editChat, removeChat,
   } = useMessengerStore();
-
-  console.log(messages);
 
   useEffect(() => {
     const socket = io('');
