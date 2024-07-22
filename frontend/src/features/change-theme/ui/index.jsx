@@ -18,14 +18,8 @@ export const ChangeTheme = () => {
   return (
     <Dropdown backdrop='blur' placement='bottom'>
       <DropdownTrigger>
-        <Button
-          isIconOnly
-          size='sm'
-          variant='light'
-          radius='full'
-          aria-label='Оформление'
-        >
-          <ThemeIcon className='w-2/3 h-2/3' />
+        <Button isIconOnly aria-label='Оформление' className='shadow-base'>
+          <ThemeIcon className='w-1/2 h-1/2' />
         </Button>
       </DropdownTrigger>
       <DropdownMenu

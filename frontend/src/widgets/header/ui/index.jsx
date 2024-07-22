@@ -1,16 +1,21 @@
 import { useMessengerStore } from 'entities/messenger';
+import { LogoutButton } from 'features/auth/logout';
 import { ChangeTheme } from 'features/change-theme';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PiLightningBold } from 'react-icons/pi';
+import { useLocation } from 'react-router-dom';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
 
 export const Header = () => {
+  useLocation();
   const { activeChat, messages } = useMessengerStore();
   const { t } = useTranslation();
 
   const [msg, setMsg] = useState([]);
+
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (messages) {
@@ -50,7 +55,10 @@ export const Header = () => {
           )}
         </Flex>
 
-        <ChangeTheme />
+        <Flex center width='min-content'>
+          <ChangeTheme />
+          {token && <LogoutButton />}
+        </Flex>
       </Flex>
     </nav>
   );

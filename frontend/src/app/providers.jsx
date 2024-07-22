@@ -10,7 +10,7 @@ export const Providers = ({ i18n, router, store }) => {
 
   return (
     <LazyMotion features={loadFeatures}>
-      <NextThemesProvider attribute='class' defaultTheme='light'>
+      <NextThemesProvider attribute='class' defaultTheme='light' disableTransitionOnChange>
         <NextUIProvider>
           <I18nextProvider i18n={i18n}>
             <ReduxProvider store={store}>
