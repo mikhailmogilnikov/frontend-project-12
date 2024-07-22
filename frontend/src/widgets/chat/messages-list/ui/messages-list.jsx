@@ -1,3 +1,4 @@
+import { Spinner } from '@nextui-org/react';
 import { MessageBubble } from 'entities/message';
 import { useMessengerStore } from 'entities/messenger';
 import { LayoutGroup } from 'framer-motion';
@@ -8,8 +9,8 @@ import { Typo } from 'shared/ui/primitives/typography';
 export const MessagesList = () => {
   const { messages, activeChat } = useMessengerStore();
 
-  if (!messages) {
-    return null;
+  if (!messages || !activeChat) {
+    return <Spinner />;
   }
 
   const chatMessages = messages.filter(
