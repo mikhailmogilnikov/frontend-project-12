@@ -7,16 +7,26 @@ export const MessageBubble = ({ message }) => {
   const isOwnMessage = message.username === myUsername;
 
   return (
-    <Flex col className={`max-w-[800px] mx-auto ${isOwnMessage && 'items-end'}`} gap={0}>
+    <Flex
+      col
+      className={`max-w-[800px] mx-auto ${isOwnMessage && 'items-end'}`}
+      gap={0}
+    >
       <Typo weight={600} size={14} opacity={0.5}>
         {message.username}
       </Typo>
       <Flex
         wrap
-        className='w-fit max-w-[90%] h-min bg-primary px-3 py-1 rounded-2xl overflow-hidden break-words'
+        className={`w-fit max-w-[90%] h-min ${
+          isOwnMessage ? 'bg-primary' : 'bg-default'
+        } px-3 py-1 rounded-2xl overflow-hidden break-words`}
         editable
       >
-        <Typo className='text-wrap !break-all text-primary-foreground select-text'>
+        <Typo
+          className={`text-wrap !break-all  select-text ${
+            isOwnMessage && 'text-primary-foreground'
+          }`}
+        >
           {message.body}
         </Typo>
       </Flex>

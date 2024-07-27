@@ -4,12 +4,13 @@ import { ChangeTheme } from 'features/change-theme';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PiLightningBold } from 'react-icons/pi';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
 
 export const Header = () => {
   useLocation();
+  const navigate = useNavigate();
   const { activeChat, messages } = useMessengerStore();
   const { t } = useTranslation();
 
@@ -26,16 +27,28 @@ export const Header = () => {
     }
   }, [messages, activeChat]);
 
+  const handleNavigateHome = () => {
+    if (token) {
+      navigate('/');
+    } else {
+      navigate('/login');
+    }
+  };
+
   return (
     <nav className='h-16 border-b-1 border-b-divider bg-background w-full z-10'>
       <Flex center className='mx-auto px-4 h-full justify-between'>
         <Flex>
-          <Flex center gap={2} className='max-w-72 flex-shrink-0'>
+          <button
+            onClick={handleNavigateHome}
+            type='button'
+            className='flex gap-2 items-center w-full max-w-72 flex-shrink-0 text-start'
+          >
             <PiLightningBold size={20} />
             <Typo tag='h1' size={24} weight={600}>
-              Realtime Chat
+              Hexlet Chat
             </Typo>
-          </Flex>
+          </button>
 
           {activeChat && msg && (
             <Flex col gap={2} className='pl-4'>

@@ -13,6 +13,8 @@
 html,
 body {
   overflow-x: hidden;
+  overscroll-behavior: none;
+  -webkit-touch-callout: none;
 }
 
 body {
@@ -38,6 +40,10 @@ p {
   letter-spacing: -0.025em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.momentumScrollable {
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Scrollbar */

@@ -11,7 +11,7 @@ export const MessagesBar = () => {
     <Flex center col tag='section' gap={0}>
       <ScrollShadow
         orientation='vertical'
-        className='flex flex-col-reverse w-full h-full gap-1 px-4 py-8'
+        className='flex flex-col-reverse w-full h-full gap-1 px-4 py-8 momentumScrollable'
       >
         {isLoading ? <Spinner /> : <MessagesList />}
       </ScrollShadow>

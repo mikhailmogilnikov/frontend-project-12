@@ -8,8 +8,9 @@ import { PasswordInput } from 'shared/ui/inputs/password-input';
 import { Typo } from 'shared/ui/primitives/typography';
 import { AnimatePresence, LayoutGroup } from 'framer-motion';
 import { MotionLayout } from 'shared/ui/motion-layout';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ErrorBlock } from 'shared/ui/error-block';
 import { loginApi } from '../api/login';
 
 export const LoginForm = () => {
@@ -48,7 +49,7 @@ export const LoginForm = () => {
             <LayoutGroup>
               <MotionLayout>
                 <Typo tag='h2' weight={600} size={24} className='mb-2'>
-                  {t('enter')}
+                  {t('login.enter')}
                 </Typo>
               </MotionLayout>
 
@@ -59,11 +60,12 @@ export const LoginForm = () => {
                   isInvalid={errors.username}
                   size='lg'
                   classNames={{ inputWrapper: '!bg-default' }}
-                  placeholder={t('nickname')}
+                  placeholder={t('login.nickname')}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
                   required
+                  autoFocus
                 />
               </MotionLayout>
 
@@ -84,14 +86,7 @@ export const LoginForm = () => {
 
               <AnimatePresence>
                 {errors.message === 'Request failed with status code 401' && (
-                  <MotionLayout
-                    initial={{ opacity: 0, filter: 'blur(24px)' }}
-                    animate={{ opacity: 1, filter: 'blur(0px)' }}
-                    exit={{ opacity: 0, filter: 'blur(24px)' }}
-                    className='px-4 py-3 bg-danger/20 rounded-2xl'
-                  >
-                    <Typo className='text-danger'>{t('error')}</Typo>
-                  </MotionLayout>
+                  <ErrorBlock>{t('login.error')}</ErrorBlock>
                 )}
               </AnimatePresence>
 
@@ -105,20 +100,20 @@ export const LoginForm = () => {
                   className='mt-3 font-medium'
                   isSubmitting={isSubmitting}
                 >
-                  {t('enter')}
+                  {t('login.enter')}
                 </Button>
 
                 <Typo tag='h3' weight={600} size={16} className='mt-6'>
                   <span className='opacity-50'>
-                    {t('noAccount')}
+                    {t('login.noAccount')}
                     {' '}
                   </span>
-                  <button type='button'>{t('register')}</button>
+                  <Link to='/signup'>{t('login.register')}</Link>
                   <br />
                 </Typo>
 
                 <Typo weight={600} size={16} opacity={0.5}>
-                  {t('testData')}
+                  {t('login.testData')}
                   {' '}
                   admin admin.
                 </Typo>

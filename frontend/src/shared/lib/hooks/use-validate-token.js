@@ -12,9 +12,14 @@ export const useValidateToken = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    if (location.pathname === '/login' && token) {
+    const UNPROTECTED_ROUTES = ['/login', '/signup'];
+    const isLocationUnprotected = UNPROTECTED_ROUTES.includes(
+      location.pathname,
+    );
+
+    if (isLocationUnprotected && token) {
       navigate('/');
-    } else if (location.pathname !== '/login' && !token) {
+    } else if (!isLocationUnprotected && !token) {
       navigate('/login');
     }
   }, []);

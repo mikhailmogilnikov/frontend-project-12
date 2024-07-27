@@ -30,16 +30,21 @@ export const MessagesList = () => {
 
   return (
     <LayoutGroup>
-      {chatMessages.reverse().map((message, index) => (
-        <MotionLayout
-          key={message.id}
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: index * 0.01 }}
-        >
-          <MessageBubble message={message} />
-        </MotionLayout>
-      ))}
+      {chatMessages.reverse().map((message, index) => {
+        const myUsername = localStorage.getItem('username');
+        const isOwnMessage = message.username === myUsername;
+
+        return (
+          <MotionLayout
+            key={message.id}
+            initial={{ opacity: 0, x: isOwnMessage ? 30 : -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.01 }}
+          >
+            <MessageBubble message={message} />
+          </MotionLayout>
+        );
+      })}
     </LayoutGroup>
   );
 };

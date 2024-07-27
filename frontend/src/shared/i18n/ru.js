@@ -1,3 +1,7 @@
+const shared = {
+  password: 'Пароль',
+};
+
 const login = {
   enter: 'Войти',
   error: 'Неверные имя пользователя и пароль',
@@ -5,7 +9,18 @@ const login = {
   register: 'Зарегистрироваться.',
   testData: 'Тестовые данные:',
   nickname: 'Ваш ник',
+};
+
+const signup = {
+  signup: 'Регистрация',
+  signup_action: 'Зарегистрироваться',
+  error: 'Неверные имя пользователя и пароль',
+  have_account: 'Есть аккаунт?',
+  login: 'Войти.',
+  testData: 'Тестовые данные:',
+  username: 'Имя пользователя',
   password: 'Пароль',
+  confirm_password: 'Подтвердите пароль',
 };
 
 const chat = {
@@ -18,7 +33,9 @@ const chat = {
 
 export default {
   translation: {
-    ...login,
+    ...shared,
+    login,
+    signup,
     chat,
   },
 };
