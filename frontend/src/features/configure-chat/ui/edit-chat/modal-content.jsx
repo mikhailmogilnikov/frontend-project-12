@@ -4,6 +4,7 @@ import {
 import { ChatValidationSchema, useEditChatMutation } from 'entities/chat';
 import { useMessengerStore } from 'entities/messenger';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import { uniqueNameValidation } from 'shared/lib/utils/unique-value-validation';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
@@ -11,6 +12,7 @@ import { Typo } from 'shared/ui/primitives/typography';
 export const EditChatModalContent = ({ onClose, chat }) => {
   const { chats } = useMessengerStore();
   const [editChat] = useEditChatMutation();
+  const { t } = useTranslation();
 
   const handleEditChannel = async ({ channel }, { setSubmitting }) => {
     const newChat = { name: channel };
@@ -22,11 +24,12 @@ export const EditChatModalContent = ({ onClose, chat }) => {
   return (
     <>
       <ModalHeader className='flex flex-col gap-1'>
-        <h2 className='text-xl p-2 pb-0 pt-3'>Переименовать канал</h2>
+        <h2 className='text-xl p-2 pb-0 pt-3'>{t('editChat.title')}</h2>
       </ModalHeader>
       <Formik
         initialValues={{ channel: chat.name }}
         onSubmit={handleEditChannel}
+        validateOnBlur={false}
         validationSchema={ChatValidationSchema(uniqueNameValidation(chats))}
       >
         {({
@@ -46,7 +49,7 @@ export const EditChatModalContent = ({ onClose, chat }) => {
                 id='channel'
                 name='channel'
                 classNames={{ inputWrapper: '!bg-default' }}
-                placeholder='Название канала'
+                placeholder={t('editChat.placeholder')}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.channel}
@@ -56,13 +59,13 @@ export const EditChatModalContent = ({ onClose, chat }) => {
               {errors.channel && (
                 <Flex className='px-4 py-3 bg-danger/20  rounded-large'>
                   <Typo weight={500} className='text-danger'>
-                    {errors.channel}
+                    {t(`addChat.validation.${errors.channel}`)}
                   </Typo>
                 </Flex>
               )}
 
               <p className='opacity-50 font-medium px-2 py-1'>
-                Изменения увидят все пользователи чата.
+                {t('editChat.caption')}
               </p>
             </ModalBody>
             <div className='w-full flex gap-4 px-6 pb-6 pt-4'>
@@ -73,7 +76,7 @@ export const EditChatModalContent = ({ onClose, chat }) => {
                 type='button'
                 onPress={onClose}
               >
-                Отмена
+                {t('cancel')}
               </Button>
               <Button
                 type='submit'
@@ -83,7 +86,7 @@ export const EditChatModalContent = ({ onClose, chat }) => {
                 size='lg'
                 variant='shadow'
               >
-                Отправить
+                {t('send')}
               </Button>
             </div>
           </form>

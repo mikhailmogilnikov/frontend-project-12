@@ -1,35 +1,20 @@
-import { Flex } from 'shared/ui/primitives/flex';
-import { Typo } from 'shared/ui/primitives/typography';
+import { MotionLayout } from 'shared/ui/motion-layout';
+import { MessageBubble } from './bubble';
 
-export const MessageBubble = ({ message }) => {
+export const Message = ({ message }) => {
   const myUsername = localStorage.getItem('username');
-
   const isOwnMessage = message.username === myUsername;
 
   return (
-    <Flex
-      col
-      className={`max-w-[800px] mx-auto ${isOwnMessage && 'items-end'}`}
-      gap={0}
+    <MotionLayout
+      key={message.id}
+      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ x: isOwnMessage ? 30 : -30 }}
+      // animate={{ opacity: 1, x: 0 }}
+      // transition={{ delay: index * 0.01 }}
+      transition={{ type: 'spring', stiffness: 600, damping: 60 }}
     >
-      <Typo weight={600} size={14} opacity={0.5}>
-        {message.username}
-      </Typo>
-      <Flex
-        wrap
-        className={`w-fit max-w-[90%] h-min ${
-          isOwnMessage ? 'bg-primary' : 'bg-default'
-        } px-3 py-1 rounded-2xl overflow-hidden break-words`}
-        editable
-      >
-        <Typo
-          className={`text-wrap !break-all  select-text ${
-            isOwnMessage && 'text-primary-foreground'
-          }`}
-        >
-          {message.body}
-        </Typo>
-      </Flex>
-    </Flex>
+      <MessageBubble message={message} />
+    </MotionLayout>
   );
 };

@@ -41,6 +41,7 @@ export const SignupForm = () => {
       <Formik
         initialValues={{ username: '', password: '', confirm: '' }}
         onSubmit={handleSignup}
+        validateOnBlur={false}
         validationSchema={SignupValidationSchema}
       >
         {({
@@ -64,7 +65,7 @@ export const SignupForm = () => {
                 name='username'
                 autoComplete='off'
                 isInvalid={!!errors.username}
-                errorMessage={errors.username}
+                errorMessage={t(`signup.validation.${errors.username}`)}
                 size='lg'
                 classNames={{ inputWrapper: '!bg-default' }}
                 placeholder={t('signup.username')}
@@ -80,7 +81,7 @@ export const SignupForm = () => {
                 name='password'
                 autoComplete='new-password'
                 isInvalid={!!errors.password}
-                errorMessage={errors.password}
+                errorMessage={t(`signup.validation.${errors.password}`)}
                 size='lg'
                 classNames={{ inputWrapper: '!bg-default' }}
                 placeholder={t('password')}
@@ -95,7 +96,7 @@ export const SignupForm = () => {
                 name='confirm'
                 autoComplete='new-password'
                 isInvalid={errors.confirm}
-                errorMessage={errors.confirm}
+                errorMessage={t(`signup.validation.${errors.confirm}`)}
                 size='lg'
                 classNames={{ inputWrapper: '!bg-default' }}
                 placeholder={t('signup.confirm_password')}
@@ -106,8 +107,10 @@ export const SignupForm = () => {
               />
 
               <AnimatePresence>
-                {errors.message === 'Request failed with status code 401' && (
-                  <ErrorBlock>{t('error')}</ErrorBlock>
+                {!!errors.response && (
+                  <ErrorBlock>
+                    {t(`signup.errors.${errors.response.status}`)}
+                  </ErrorBlock>
                 )}
               </AnimatePresence>
 

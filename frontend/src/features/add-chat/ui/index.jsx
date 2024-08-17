@@ -3,10 +3,12 @@ import {
 } from '@nextui-org/react';
 import { PiPlusCircleBold } from 'react-icons/pi';
 import { ModalVariants } from 'shared/config/animation-variants';
+import { useTranslation } from 'react-i18next';
 import { AddChatModalContent } from './modal';
 
 export const AddChatButton = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -16,7 +18,7 @@ export const AddChatButton = () => {
         onPress={onOpen}
       >
         <PiPlusCircleBold size={18} />
-        Добавить чат
+        {t('addChat.title')}
       </Button>
       <Modal
         backdrop='blur'

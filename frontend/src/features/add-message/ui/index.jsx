@@ -1,8 +1,10 @@
-import { Input } from '@nextui-org/react';
+/* eslint-disable jsx-a11y/no-autofocus */
+
 import { useAddMessageMutation } from 'entities/message/model/messages-store';
 import { useMessengerStore } from 'entities/messenger';
 import { useEffect, useRef, useState } from 'react';
 import { MotionLayout } from 'shared/ui/motion-layout';
+import { Input } from '@nextui-org/react';
 import { SendMessage } from './button';
 
 export const AddMessageInput = ({ isLoading }) => {
@@ -15,7 +17,10 @@ export const AddMessageInput = ({ isLoading }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (newMessage.length > 1024) {
+    if (newMessage.length > 1024 || newMessage.length === 0) {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
       return;
     }
 
@@ -45,7 +50,6 @@ export const AddMessageInput = ({ isLoading }) => {
           ref={inputRef}
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
-          isDisabled={isLoading}
           className='flex-shrink-0 mb-6'
           classNames={{ inputWrapper: '!bg-default shadow-base' }}
           size='lg'
@@ -53,9 +57,12 @@ export const AddMessageInput = ({ isLoading }) => {
           radius='full'
           autoComplete='off'
           placeholder='Введите сообщение...'
-          endContent={
-            <SendMessage message={newMessage} isLoading={isLoadingMessage} />
-          }
+          endContent={(
+            <SendMessage
+              message={newMessage}
+              isLoading={isLoadingMessage || isLoading}
+            />
+          )}
         />
       </form>
     </MotionLayout>

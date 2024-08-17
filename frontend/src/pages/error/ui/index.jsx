@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
 
 export const ErrorPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleNavigate = () => {
     navigate('/');
@@ -19,11 +21,11 @@ export const ErrorPage = () => {
           className=' leading-tight'
           weight={600}
         >
-          Этой страницы не существует.
+          {t('notFound.message')}
         </Typo>
         <button type='button' className='w-fit' onClick={handleNavigate}>
           <Typo tag='h1' size={32} weight={600}>
-            Вернуться.
+            {t('notFound.back')}
           </Typo>
         </button>
       </Flex>

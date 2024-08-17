@@ -35,6 +35,7 @@ export const LoginForm = () => {
     <Flex className='m-auto max-w-96'>
       <Formik
         initialValues={{ username: '', password: '' }}
+        validateOnBlur={false}
         onSubmit={handleLogin}
       >
         {({
@@ -85,8 +86,10 @@ export const LoginForm = () => {
               </MotionLayout>
 
               <AnimatePresence>
-                {errors.message === 'Request failed with status code 401' && (
-                  <ErrorBlock>{t('login.error')}</ErrorBlock>
+                {!!errors.response && (
+                  <ErrorBlock>
+                    {t(`login.errors.${errors.response.status}`)}
+                  </ErrorBlock>
                 )}
               </AnimatePresence>
 

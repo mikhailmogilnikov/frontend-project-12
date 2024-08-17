@@ -3,12 +3,12 @@ import * as yup from 'yup';
 export const ChatValidationSchema = (uniqueValidation) => yup.object().shape({
   channel: yup
     .string()
-    .min(3, 'Название канала должно содержать не менее 3 символов')
-    .max(20, 'Название канала должно содержать не более 20 символов')
-    .required('Название канала обязательно')
+    .required('required')
+    .min(3, 'min')
+    .max(20, 'max')
     .test({
       name: 'test',
-      message: 'Название канала должно быть уникальным',
+      message: 'unique',
       test: uniqueValidation,
     }),
 });

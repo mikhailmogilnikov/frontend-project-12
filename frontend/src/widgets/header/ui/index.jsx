@@ -19,7 +19,7 @@ export const Header = () => {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    if (messages) {
+    if (messages && activeChat) {
       const activeChatMessages = messages.filter(
         (message) => message.channelId === activeChat.id,
       );
@@ -46,7 +46,7 @@ export const Header = () => {
           >
             <PiLightningBold size={20} />
             <Typo tag='h1' size={24} weight={600}>
-              Hexlet Chat
+              {t('project.title')}
             </Typo>
           </button>
 
