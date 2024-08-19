@@ -1,3 +1,4 @@
+/* eslint-disable functional/no-try-statement */
 import {
   Button, Input, ModalBody, ModalHeader,
 } from '@nextui-org/react';
@@ -8,6 +9,7 @@ import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
 import { uniqueNameValidation } from 'shared/lib/utils/unique-value-validation';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 export const AddChatModalContent = ({ onClose }) => {
   const { chats, setActiveChat } = useMessengerStore();
@@ -16,8 +18,13 @@ export const AddChatModalContent = ({ onClose }) => {
 
   const handleCreateChannel = async ({ channel }, { setSubmitting }) => {
     const newChat = { name: channel };
-    const newChatResponse = await addChat(newChat);
-    setActiveChat(newChatResponse.data);
+    try {
+      const createdChat = await addChat(newChat).unwrap();
+      setActiveChat(createdChat);
+      toast.success(t('addChat.success'));
+    } catch {
+      toast.error(t('project.networkError'));
+    }
     setSubmitting(false);
     onClose();
   };

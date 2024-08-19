@@ -1,5 +1,6 @@
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
+import filter from 'leo-profanity';
 
 export const MessageBubble = ({ message }) => {
   const myUsername = localStorage.getItem('username');
@@ -27,7 +28,7 @@ export const MessageBubble = ({ message }) => {
             isOwnMessage && 'text-primary-foreground'
           }`}
         >
-          {message.body}
+          {filter.clean(message.body)}
         </Typo>
       </Flex>
     </Flex>

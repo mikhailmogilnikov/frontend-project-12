@@ -5,6 +5,7 @@ import { ChatValidationSchema, useEditChatMutation } from 'entities/chat';
 import { useMessengerStore } from 'entities/messenger';
 import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { uniqueNameValidation } from 'shared/lib/utils/unique-value-validation';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
@@ -16,7 +17,13 @@ export const EditChatModalContent = ({ onClose, chat }) => {
 
   const handleEditChannel = async ({ channel }, { setSubmitting }) => {
     const newChat = { name: channel };
-    await editChat({ id: chat.id, body: newChat });
+    try {
+      await editChat({ id: chat.id, body: newChat }).unwrap();
+      toast.success(t('editChat.success'));
+    } catch {
+      toast.error(t('project.networkError'));
+    }
+
     setSubmitting(false);
     onClose();
   };

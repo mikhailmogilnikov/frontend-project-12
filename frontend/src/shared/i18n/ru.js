@@ -9,12 +9,14 @@ const shared = {
 
 const project = {
   title: 'Hexlet Chat',
+  networkError: 'Ошибка соединения',
 };
 
 const addChat = {
   title: 'Добавить канал',
   placeholder: 'Название канала',
   caption: 'Канал создается публично и доступен всем пользователям чата.',
+  success: 'Канал создан',
   validation: {
     required: 'Обязательное поле',
     min: 'От 3 до 20 символов',
@@ -27,11 +29,13 @@ const editChat = {
   title: 'Переименовать канал',
   placeholder: 'Название канала',
   caption: 'Изменения увидят все пользователи чата.',
+  success: 'Канал переименован',
 };
 
 const deleteChat = {
   title: 'Удалить канал',
   caption: 'Уверены?',
+  success: 'Канал удален',
 };
 
 const notFound = {

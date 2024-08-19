@@ -2,6 +2,7 @@ import { Button } from '@nextui-org/react';
 import { useMessengerStore } from 'entities/messenger';
 import { FaLock } from 'react-icons/fa';
 import { PiMegaphoneSimpleBold } from 'react-icons/pi';
+import filter from 'leo-profanity';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
 
@@ -33,7 +34,7 @@ export const ChatCard = ({ chat, onPress, settings }) => {
                   isChatActive && 'text-secondary-foreground'
                 }`}
               >
-                {`# ${chat.name}`}
+                {`# ${filter.clean(chat.name)}`}
               </Typo>
               <PiMegaphoneSimpleBold
                 size={14}
@@ -69,7 +70,7 @@ export const ChatCard = ({ chat, onPress, settings }) => {
                 :
                 {' '}
               </span>
-              <span>{chatMessages.at(-1).body}</span>
+              <span>{filter.clean(chatMessages.at(-1).body)}</span>
             </Typo>
           ) : (
             <Typo

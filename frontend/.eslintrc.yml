@@ -19,6 +19,7 @@ plugins:
   - functional
 
 rules:
+  functional/no-try-statement: 0
   react-hooks/exhaustive-deps: 0
   functional/no-conditional-statement: 0
   react/jsx-props-no-spreading: 0

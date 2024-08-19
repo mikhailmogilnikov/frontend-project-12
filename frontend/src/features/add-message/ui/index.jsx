@@ -5,10 +5,13 @@ import { useMessengerStore } from 'entities/messenger';
 import { useEffect, useRef, useState } from 'react';
 import { MotionLayout } from 'shared/ui/motion-layout';
 import { Input } from '@nextui-org/react';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { SendMessage } from './button';
 
 export const AddMessageInput = ({ isLoading }) => {
   const { activeChat } = useMessengerStore();
+  const { t } = useTranslation();
 
   const inputRef = useRef(null);
   const [newMessage, setNewMessage] = useState('');
@@ -25,9 +28,18 @@ export const AddMessageInput = ({ isLoading }) => {
     }
 
     const username = localStorage.getItem('username');
-    await addMessage({ body: newMessage, channelId: activeChat.id, username });
-    setNewMessage('');
 
+    try {
+      await addMessage({
+        body: newMessage,
+        channelId: activeChat.id,
+        username,
+      }).unwrap();
+
+      setNewMessage('');
+    } catch {
+      toast.error(t('project.networkError'));
+    }
     if (inputRef.current) {
       inputRef.current.focus();
     }

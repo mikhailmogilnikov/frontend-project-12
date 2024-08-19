@@ -2,13 +2,19 @@ import { Button, ModalBody, ModalHeader } from '@nextui-org/react';
 import { useRemoveChatMutation } from 'entities/chat';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 export const DeleteChatModalContent = ({ onClose, chat }) => {
   const [deleteChat, { isLoading }] = useRemoveChatMutation();
   const { t } = useTranslation();
 
   const handleDeleteChannel = async () => {
-    await deleteChat(chat.id);
+    try {
+      await deleteChat(chat.id).unwrap();
+      toast.success(t('deleteChat.success'));
+    } catch {
+      toast.error(t('project.networkError'));
+    }
     onClose();
   };
 

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PiLightningBold } from 'react-icons/pi';
 import { useLocation, useNavigate } from 'react-router-dom';
+import filter from 'leo-profanity';
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
 
@@ -53,7 +54,7 @@ export const Header = () => {
           {activeChat && msg && (
             <Flex col gap={2} className='pl-4'>
               <Typo tag='h4' size={18} weight={600} className='leading-4'>
-                {`# ${activeChat.name}`}
+                {`# ${filter.clean(activeChat.name)}`}
               </Typo>
               <Typo
                 tag='h5'
