@@ -4,6 +4,11 @@ import 'react-toastify/dist/ReactToastify.min.css';
 
 export const ToastProvider = ({ children }) => {
   const { resolvedTheme } = useTheme();
+
+  function TestError() {
+    const a = null;
+    return a.hello();
+  }
   return (
     <>
       <ToastContainer
@@ -14,6 +19,7 @@ export const ToastProvider = ({ children }) => {
         hideProgressBar
         draggable
       />
+      <TestError />
       {children}
     </>
   );
