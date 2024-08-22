@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable */
 
 import { Input } from '@nextui-org/input';
 import { useState } from 'react';

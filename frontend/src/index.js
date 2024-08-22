@@ -1,4 +1,4 @@
-/* eslint-disable functional/no-expression-statement */
+/* eslint-disable */
 
 import ReactDOM from 'react-dom/client';
 import { initApp } from './app';
