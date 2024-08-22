@@ -35,6 +35,7 @@ export const ChatSettingsDropdown = ({ chat }) => {
             color={isChatActive ? 'secondary' : 'default'}
             className='min-h-0 min-w-0 w-4 h-4 bg-transparent'
           >
+            <span className='visually-hidden'>Управление каналом</span>
             <PiGearFineBold size={16} />
           </Button>
         </DropdownTrigger>
