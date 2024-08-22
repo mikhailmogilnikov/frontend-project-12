@@ -57,7 +57,9 @@ export const AddChatModalContent = ({ onClose }) => {
                 id='channel'
                 name='channel'
                 classNames={{ inputWrapper: '!bg-default' }}
-                placeholder={t('addChat.placeholder')}
+                placeholder=' '
+                label={t('addChat.placeholder')}
+                labelPlacement='inside'
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.channel}

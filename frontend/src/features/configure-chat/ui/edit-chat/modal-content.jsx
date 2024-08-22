@@ -56,7 +56,9 @@ export const EditChatModalContent = ({ onClose, chat }) => {
                 id='channel'
                 name='channel'
                 classNames={{ inputWrapper: '!bg-default' }}
-                placeholder={t('editChat.placeholder')}
+                placeholder=' '
+                label={t('editChat.placeholder')}
+                labelPlacement='inside'
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.channel}
