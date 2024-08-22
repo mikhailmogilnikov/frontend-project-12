@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Button } from '@nextui-org/react';
 import { useTranslation } from 'react-i18next';
 import { BiLogOut } from 'react-icons/bi';

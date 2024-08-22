@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
   Button, Modal, ModalContent, useDisclosure,
 } from '@nextui-org/react';

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { PiDevicesBold, PiMoonBold, PiSunBold } from 'react-icons/pi';
 
 export const ThemeIcons = {

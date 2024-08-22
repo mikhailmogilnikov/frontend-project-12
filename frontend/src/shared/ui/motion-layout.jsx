@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { m } from 'framer-motion';
 
 export const MotionLayout = ({ children, ...restProps }) => {

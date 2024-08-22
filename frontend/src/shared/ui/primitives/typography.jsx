@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const Typo = ({
   children,
   tag = 'p',

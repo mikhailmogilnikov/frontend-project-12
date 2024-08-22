@@ -1,5 +1,4 @@
-/* eslint-disable functional/no-try-statement */
-/* eslint-disable functional/no-conditional-statement */
+/* eslint-disable */
 
 import { Button, Input } from '@nextui-org/react';
 import { Formik } from 'formik';

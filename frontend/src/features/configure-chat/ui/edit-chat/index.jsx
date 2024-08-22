@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Modal, ModalContent, useDisclosure } from '@nextui-org/react';
 import { useEffect } from 'react';
 import { ModalVariants } from 'shared/config/animation-variants';

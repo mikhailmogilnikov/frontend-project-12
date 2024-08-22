@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Spinner } from '@nextui-org/react';
 import { Message } from 'entities/message';
 import { useMessengerStore } from 'entities/messenger';

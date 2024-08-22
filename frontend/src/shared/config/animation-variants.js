@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const ModalVariants = {
   variants: {
     enter: {

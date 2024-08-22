@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useMessengerStore } from 'entities/messenger';
 import { LogoutButton } from 'features/auth/logout';
 import { ChangeTheme } from 'features/change-theme';

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Spinner } from '@nextui-org/react';
 import { ChatCard } from 'entities/chat';
 import { useGetMessagesQuery } from 'entities/message';

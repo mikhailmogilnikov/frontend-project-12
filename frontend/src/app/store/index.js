@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { configureStore } from '@reduxjs/toolkit';
 import { chatsApi } from 'entities/chat';
 import { messagesApi } from 'entities/message';

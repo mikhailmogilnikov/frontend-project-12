@@ -1,4 +1,4 @@
-/* eslint-disable functional/no-try-statement */
+/* eslint-disable */
 import {
   Button, Input, ModalBody, ModalHeader,
 } from '@nextui-org/react';

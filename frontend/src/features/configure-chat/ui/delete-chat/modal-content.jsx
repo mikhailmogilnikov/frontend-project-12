@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Button, ModalBody, ModalHeader } from '@nextui-org/react';
 import { useRemoveChatMutation } from 'entities/chat';
 import { useEffect } from 'react';

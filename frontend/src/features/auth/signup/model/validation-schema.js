@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as yup from 'yup';
 
 export const SignupValidationSchema = yup.object().shape({

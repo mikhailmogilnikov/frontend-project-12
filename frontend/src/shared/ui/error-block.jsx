@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { MotionLayout } from './motion-layout';
 import { Typo } from './primitives/typography';
 

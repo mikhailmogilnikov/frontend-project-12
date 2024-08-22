@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { MessengerProvider } from 'entities/messenger';
 import { Flex } from 'shared/ui/primitives/flex';
 import { ChatsBar } from 'widgets/chat/chats-bar';

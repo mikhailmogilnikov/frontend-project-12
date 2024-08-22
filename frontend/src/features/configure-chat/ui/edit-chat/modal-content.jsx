@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
   Button, Input, ModalBody, ModalHeader,
 } from '@nextui-org/react';

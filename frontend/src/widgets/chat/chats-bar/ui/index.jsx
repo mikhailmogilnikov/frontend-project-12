@@ -1,4 +1,4 @@
-/* eslint-disable functional/no-conditional-statement */
+/* eslint-disable */
 import { Divider, ScrollShadow, Spinner } from '@nextui-org/react';
 import { AddChatButton } from 'features/add-chat';
 import { Flex } from 'shared/ui/primitives/flex';

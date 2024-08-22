@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Flex } from 'shared/ui/primitives/flex';

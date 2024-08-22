@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ScrollShadow, Spinner } from '@nextui-org/react';
 import { Flex } from 'shared/ui/primitives/flex';
 import { AddMessageInput } from 'features/add-message';

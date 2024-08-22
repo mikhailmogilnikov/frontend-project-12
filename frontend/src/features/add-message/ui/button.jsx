@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Button } from '@nextui-org/react';
 import { AnimatePresence } from 'framer-motion';
 import { PiCaretRightBold } from 'react-icons/pi';

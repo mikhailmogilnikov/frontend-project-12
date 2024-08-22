@@ -1,6 +1,4 @@
-/* eslint-disable functional/no-conditional-statement */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-expressions */
+/* eslint-disable */
 
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';

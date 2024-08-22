@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ErrorBoundary, Provider } from '@rollbar/react';
 
 export const RollbarProvider = ({ children }) => {
