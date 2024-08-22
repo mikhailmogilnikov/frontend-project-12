@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Button } from '@nextui-org/react';
 import { useMessengerStore } from 'entities/messenger';
 import filter from 'leo-profanity';

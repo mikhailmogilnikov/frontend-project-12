@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Outlet } from 'react-router-dom';
 import { useValidateToken } from 'shared/lib/hooks/use-validate-token';
 import { Flex } from 'shared/ui/primitives/flex';

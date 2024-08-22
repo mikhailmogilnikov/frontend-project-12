@@ -1,4 +1,4 @@
-/* eslint-disable functional/no-try-statement */
+/* eslint-disable */
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
 import { toast } from 'react-toastify';

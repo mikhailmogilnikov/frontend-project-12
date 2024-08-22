@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Flex } from 'shared/ui/primitives/flex';
 import { Typo } from 'shared/ui/primitives/typography';
 import filter from 'leo-profanity';

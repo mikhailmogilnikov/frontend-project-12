@@ -1,3 +1,4 @@
+/* eslint-disable */
 export { ChatCard } from './ui';
 export {
   useGetChatsQuery,

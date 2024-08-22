@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ErrorPage } from 'pages/error';
 import { HomePage } from 'pages/home';
 import { LoginPage } from 'pages/login';

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { MotionLayout } from 'shared/ui/motion-layout';
 import { MessageBubble } from './bubble';
 

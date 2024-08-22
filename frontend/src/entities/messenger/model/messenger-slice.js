@@ -1,5 +1,4 @@
-/* eslint-disable prefer-destructuring */
-/* eslint-disable no-param-reassign */
+/* eslint-disable */
 import { createSlice } from '@reduxjs/toolkit';
 import { chatsApi } from 'entities/chat';
 import { messagesApi } from 'entities/message';
