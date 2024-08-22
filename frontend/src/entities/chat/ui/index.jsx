@@ -71,7 +71,8 @@ export const ChatCard = ({ chat, onPress, settings }) => {
                 :
                 {' '}
               </span>
-              <span>{filter.clean(chatMessages.at(-1).body)}</span>
+              {/* <span>{filter.clean(chatMessages.at(-1).body)}</span> */}
+              <span className='italic'>Новое сообщение</span>
             </Typo>
           ) : (
             <Typo
