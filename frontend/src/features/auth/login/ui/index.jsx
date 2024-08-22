@@ -61,7 +61,9 @@ export const LoginForm = () => {
                   isInvalid={errors.username}
                   size='lg'
                   classNames={{ inputWrapper: '!bg-default' }}
-                  placeholder={t('login.nickname')}
+                  label={t('login.nickname')}
+                  placeholder=' '
+                  labelPlacement='outside'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
@@ -77,7 +79,9 @@ export const LoginForm = () => {
                   isInvalid={errors.username}
                   size='lg'
                   classNames={{ inputWrapper: '!bg-default' }}
-                  placeholder={t('password')}
+                  label={t('password')}
+                  placeholder=' '
+                  labelPlacement='outside'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
