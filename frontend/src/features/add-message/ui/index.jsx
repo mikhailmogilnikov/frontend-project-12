@@ -68,7 +68,8 @@ export const AddMessageInput = ({ isLoading }) => {
           name='message'
           radius='full'
           autoComplete='off'
-          placeholder='Введите сообщение...'
+          aria-label={t('chat.newMessage')}
+          placeholder={t('chat.enterMessage')}
           endContent={(
             <SendMessage
               message={newMessage}

@@ -80,6 +80,8 @@ const chat = {
   },
   noMessages: 'Сообщений нет',
   startDialog: 'Начните диалог первым!',
+  newMessage: 'Новое сообщение',
+  enterMessage: 'Введите сообщение',
 };
 
 export default {
