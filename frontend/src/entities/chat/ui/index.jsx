@@ -34,7 +34,8 @@ export const ChatCard = ({ chat, onPress, settings }) => {
                   isChatActive && 'text-secondary-foreground'
                 }`}
               >
-                {`# ${filter.clean(chat.name)}`}
+                <span># </span>
+                {filter.clean(chat.name)}
               </Typo>
               <PiMegaphoneSimpleBold
                 size={14}
