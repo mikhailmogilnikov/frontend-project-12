@@ -15,7 +15,7 @@ const project = {
 
 const addChat = {
   title: 'Добавить канал',
-  placeholder: 'Название канала',
+  placeholder: 'Имя канала',
   caption: 'Канал создается публично и доступен всем пользователям чата.',
   success: 'Канал создан',
   validation: {
@@ -28,7 +28,7 @@ const addChat = {
 
 const editChat = {
   title: 'Переименовать канал',
-  placeholder: 'Название канала',
+  placeholder: 'Имя канала',
   caption: 'Изменения увидят все пользователи чата.',
   success: 'Канал переименован',
 };
