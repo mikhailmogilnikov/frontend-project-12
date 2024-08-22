@@ -5,6 +5,7 @@ const shared = {
   send: 'Отправить',
   logout: 'Выйти',
   delete: 'Удалить',
+  add: '+',
 };
 
 const project = {

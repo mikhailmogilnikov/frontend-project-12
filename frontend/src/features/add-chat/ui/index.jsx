@@ -1,7 +1,6 @@
 import {
   Button, Modal, ModalContent, useDisclosure,
 } from '@nextui-org/react';
-import { PiPlusCircleBold } from 'react-icons/pi';
 import { ModalVariants } from 'shared/config/animation-variants';
 import { useTranslation } from 'react-i18next';
 import { AddChatModalContent } from './modal';
@@ -17,7 +16,8 @@ export const AddChatButton = () => {
         className='font-medium shadow-base flex-shrink-0'
         onPress={onOpen}
       >
-        <PiPlusCircleBold size={18} />
+        {t('add')}
+        {' '}
         {t('addChat.title')}
       </Button>
       <Modal
