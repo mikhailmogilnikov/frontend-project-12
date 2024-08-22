@@ -36,7 +36,7 @@ const editChat = {
 const deleteChat = {
   title: 'Удалить канал',
   caption: 'Уверены?',
-  success: 'Канал удален',
+  success: 'Канал удалён',
 };
 
 const notFound = {
