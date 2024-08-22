@@ -1,10 +1,7 @@
 import { Button } from '@nextui-org/react';
 import { useMessengerStore } from 'entities/messenger';
-import { FaLock } from 'react-icons/fa';
-import { PiMegaphoneSimpleBold } from 'react-icons/pi';
-import filter from 'leo-profanity';
-import { Flex } from 'shared/ui/primitives/flex';
-import { Typo } from 'shared/ui/primitives/typography';
+
+import { ChatContent } from './content';
 
 export const ChatCard = ({ chat, onPress, settings }) => {
   const { messages, activeChat } = useMessengerStore();
@@ -15,6 +12,24 @@ export const ChatCard = ({ chat, onPress, settings }) => {
     ({ channelId }) => channelId === chat.id,
   );
 
+  if (isChatActive) {
+    return (
+      <button
+        type='button'
+        aria-label={chat.name}
+        style={{ width: '100%' }}
+        className='w-100 rounded-0 text-start text-truncate btn btn-secondary'
+      >
+        <ChatContent
+          isChatActive={isChatActive}
+          chat={chat}
+          chatMessages={chatMessages}
+          settings={settings}
+        />
+      </button>
+    );
+  }
+
   return (
     <Button
       key={chat.id}
@@ -23,71 +38,12 @@ export const ChatCard = ({ chat, onPress, settings }) => {
       color={isChatActive ? 'secondary' : 'default'}
       className='h-[78px] shadow-medium p-3 text-start rounded-2xl items-start justify-start flex-shrink-0'
     >
-      <Flex>
-        <Flex col gap={2}>
-          <Flex className='justify-between' gap={1}>
-            <Flex gap={2}>
-              <Typo
-                size={16}
-                weight={600}
-                className={`leading-3 mt-[1px] ${
-                  isChatActive && 'text-secondary-foreground'
-                }`}
-              >
-                <span># </span>
-                {filter.clean(chat.name)}
-              </Typo>
-              <PiMegaphoneSimpleBold
-                size={14}
-                opacity={0.5}
-                className={`mt-[1px] ${
-                  isChatActive && 'text-secondary-foreground'
-                }`}
-              />
-              {!chat.removable && (
-                <FaLock
-                  size={12}
-                  opacity={0.5}
-                  className={`mt-[2px] ${
-                    isChatActive && 'text-secondary-foreground'
-                  }`}
-                />
-              )}
-            </Flex>
-            {chat.removable && settings}
-          </Flex>
-
-          {chatMessages.length > 0 ? (
-            <Typo
-              size={14}
-              weight={500}
-              opacity={0.5}
-              className={`leading-4 line-clamp-2 text-wrap break-all ${
-                isChatActive && 'text-secondary-foreground'
-              }`}
-            >
-              <span>
-                {chatMessages.at(-1).username}
-                :
-                {' '}
-              </span>
-              {/* <span>{filter.clean(chatMessages.at(-1).body)}</span> */}
-              <span className='italic'>Новое сообщение</span>
-            </Typo>
-          ) : (
-            <Typo
-              size={14}
-              weight={500}
-              opacity={0.5}
-              className={`leading-4 line-clamp-2 text-wrap italic ${
-                isChatActive && 'text-secondary-foreground'
-              }`}
-            >
-              Нет сообщений
-            </Typo>
-          )}
-        </Flex>
-      </Flex>
+      <ChatContent
+        isChatActive={isChatActive}
+        chat={chat}
+        chatMessages={chatMessages}
+        settings={settings}
+      />
     </Button>
   );
 };

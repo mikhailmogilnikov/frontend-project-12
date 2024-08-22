@@ -1,6 +1,6 @@
 export const Flex = ({
   children,
-  className,
+  className = '',
   tag = 'div',
   direction = 'row',
   gap = 4,
