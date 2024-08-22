@@ -1,6 +1,6 @@
 import { Button } from '@nextui-org/react';
 import { useMessengerStore } from 'entities/messenger';
-
+import filter from 'leo-profanity';
 import { ChatContent } from './content';
 
 export const ChatCard = ({ chat, onPress, settings }) => {
@@ -16,7 +16,7 @@ export const ChatCard = ({ chat, onPress, settings }) => {
     return (
       <button
         type='button'
-        aria-label={chat.name}
+        aria-label={filter.clean(chat.name)}
         style={{ width: '100%' }}
         className='w-100 rounded-0 text-start text-truncate btn btn-secondary'
       >
