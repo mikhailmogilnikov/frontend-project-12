@@ -54,7 +54,7 @@ export const DeleteChatModalContent = ({ onClose, chat }) => {
         </Button>
         <Button
           isLoading={isLoading}
-          className='w-full font-medium'
+          className='w-full font-medium btn-danger'
           color='danger'
           size='lg'
           variant='shadow'
